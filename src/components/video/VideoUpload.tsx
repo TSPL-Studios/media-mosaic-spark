@@ -48,7 +48,7 @@ const VideoUpload = () => {
           title: title.trim(),
           description: description.trim(),
           category: category,
-          user_id: user.id,
+          creator_id: user.id,
           status: 'published',
           video_url: `https://example.com/videos/${Date.now()}.mp4`, // Placeholder
           thumbnail_url: thumbnailFile ? `https://example.com/thumbnails/${Date.now()}.jpg` : null,
