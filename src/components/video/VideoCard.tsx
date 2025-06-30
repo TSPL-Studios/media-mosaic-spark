@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { VerifiedBadge } from '@/components/ui/verified-badge';
 import { formatDistanceToNow } from 'date-fns';
 import { Eye, Clock } from 'lucide-react';
 
@@ -17,6 +18,7 @@ interface VideoCardProps {
       username: string;
       display_name: string | null;
       avatar_url: string | null;
+      subscriber_count: number | null;
     };
   };
 }
@@ -77,9 +79,12 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
                 {video.profiles.username.charAt(0).toUpperCase()}
               </AvatarFallback>
             </Avatar>
-            <span className="text-sm text-gray-600 hover:text-gray-800">
-              {video.profiles.display_name || video.profiles.username}
-            </span>
+            <div className="flex items-center space-x-1 flex-1">
+              <span className="text-sm text-gray-600 hover:text-gray-800">
+                {video.profiles.display_name || video.profiles.username}
+              </span>
+              <VerifiedBadge subscriberCount={video.profiles.subscriber_count} />
+            </div>
           </div>
         </Link>
         

@@ -7,6 +7,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Textarea } from '@/components/ui/textarea';
+import { VerifiedBadge } from '@/components/ui/verified-badge';
 import { toast } from '@/components/ui/use-toast';
 import { ThumbsUp, ThumbsDown, Share, Eye, Calendar } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
@@ -272,7 +273,10 @@ const WatchPage = () => {
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <h3 className="font-medium">{video.profiles.display_name || video.profiles.username}</h3>
+                  <div className="flex items-center space-x-2">
+                    <h3 className="font-medium">{video.profiles.display_name || video.profiles.username}</h3>
+                    <VerifiedBadge subscriberCount={video.profiles.subscriber_count} />
+                  </div>
                   <p className="text-sm text-gray-600">
                     {video.profiles.subscriber_count?.toLocaleString() || 0} subscribers
                   </p>
